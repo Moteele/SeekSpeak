@@ -57,10 +57,7 @@ class _ExerciseButtonState extends State<ExerciseButton> {
             color: widget.color,
             shape: BoxShape.circle,
           ),
-          child: Text(
-            widget.name,
-            style: TextStyle(fontSize: 20),
-          ),
+          child: Text(widget.name, style: GoogleFonts.ribeye(fontSize: 20)),
         ),
         onTap: () {
           Get.toNamed('/practice', arguments: widget.name);

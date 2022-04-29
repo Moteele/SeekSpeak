@@ -2,9 +2,9 @@ import 'app_export.dart';
 
 void main() {
   runApp(GetMaterialApp(
-    initialRoute: AppRoutes.dashboard,
-    getPages: AppRoutes.pages,
-    theme: ThemeData(
+      initialRoute: AppRoutes.dashboard,
+      getPages: AppRoutes.pages,
+      theme: ThemeData(
         //backgroundColor: const Color(0xFF00C4CC),
         scaffoldBackgroundColor: const Color(0xFF0D98BA),
         primaryColor: Colors.white,
@@ -16,6 +16,6 @@ void main() {
           secondary: const Color(0xFFC4d6bb),
         ),
         */
-        textTheme: GoogleFonts.ribeyeTextTheme()),
-  ));
+        textTheme: GoogleFonts.robotoTextTheme(),
+      )));
 }
