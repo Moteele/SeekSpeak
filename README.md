@@ -1,3 +1,3 @@
 # SeekSpeak
 
-latest ap built should be in app.apk
+latest app built should be in app.apk
