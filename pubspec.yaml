@@ -71,7 +71,6 @@ flutter:
   assets:
     - assets/
     - assets/pics/
-    - assets/pics/lamp.png
 
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg

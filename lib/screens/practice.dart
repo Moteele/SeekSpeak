@@ -1,13 +1,17 @@
 import 'package:seek_speak/app_export.dart';
 import 'package:video_player/video_player.dart';
 
+import '../objectbox.g.dart';
+
 class Practice extends StatelessWidget {
   const Practice({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    Box<Syllable> sylBox = Get.find();
+    Syllable? syl = sylBox.get(Get.arguments);
     return Scaffold(
-      appBar: AppBar(title: Text("Syllable " + Get.arguments)),
+      appBar: AppBar(title: Text("Syllable " + (syl?.name ?? 'X'))),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.center,

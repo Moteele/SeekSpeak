@@ -5,7 +5,7 @@
   "entities": [
     {
       "id": "1:4165080423475617389",
-      "lastPropertyId": "5:5649665946701017959",
+      "lastPropertyId": "7:8255048722313268029",
       "name": "Recording",
       "properties": [
         {
@@ -15,26 +15,29 @@
           "flags": 1
         },
         {
-          "id": "3:1498944597534341491",
-          "name": "name",
-          "type": 9
-        },
-        {
           "id": "4:5312526653904026975",
           "name": "recPath",
           "type": 9
         },
         {
-          "id": "5:5649665946701017959",
-          "name": "imgPath",
-          "type": 9
+          "id": "6:8661491681769295870",
+          "name": "correct",
+          "type": 1
+        },
+        {
+          "id": "7:8255048722313268029",
+          "name": "exerciseId",
+          "type": 11,
+          "flags": 520,
+          "indexId": "2:4339466554620926735",
+          "relationTarget": "Exercise"
         }
       ],
       "relations": []
     },
     {
       "id": "2:2433790730751946661",
-      "lastPropertyId": "3:4712464687601090396",
+      "lastPropertyId": "4:2418643536615506435",
       "name": "Exercise",
       "properties": [
         {
@@ -55,13 +58,18 @@
           "flags": 520,
           "indexId": "1:6733919354624951544",
           "relationTarget": "Syllable"
+        },
+        {
+          "id": "4:2418643536615506435",
+          "name": "name",
+          "type": 9
         }
       ],
       "relations": []
     },
     {
       "id": "3:1675493299718774902",
-      "lastPropertyId": "3:3736796258957808931",
+      "lastPropertyId": "5:3075084590920245823",
       "name": "Syllable",
       "properties": [
         {
@@ -79,13 +87,23 @@
           "id": "3:3736796258957808931",
           "name": "icon",
           "type": 9
+        },
+        {
+          "id": "4:4618573131528367440",
+          "name": "color",
+          "type": 6
+        },
+        {
+          "id": "5:3075084590920245823",
+          "name": "index",
+          "type": 6
         }
       ],
       "relations": []
     }
   ],
   "lastEntityId": "3:1675493299718774902",
-  "lastIndexId": "1:6733919354624951544",
+  "lastIndexId": "2:4339466554620926735",
   "lastRelationId": "0:0",
   "lastSequenceId": "0:0",
   "modelVersion": 5,
@@ -93,7 +111,9 @@
   "retiredEntityUids": [],
   "retiredIndexUids": [],
   "retiredPropertyUids": [
-    5146549794921670433
+    5146549794921670433,
+    1498944597534341491,
+    5649665946701017959
   ],
   "retiredRelationUids": [],
   "version": 1

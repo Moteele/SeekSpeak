@@ -10,7 +10,8 @@ class Dashboard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    List<Syllable> syls = sylBox.getAll();
+    List<Widget> syls =
+        sylBox.getAll().map((item) => SylButton(syl: item)).toList();
     return Scaffold(
         appBar: AppBar(
           title: const Text('Dashboard'),
@@ -46,36 +47,69 @@ class Dashboard extends StatelessWidget {
         ],
       ),*/
         body: ListView(
-          children: syls.map((item) => SylButton(syl: item)).toList(),
+          children: groupSyls(syls),
         ));
   }
 
+// group the Syllable buttons to the pattern 1, 2, 1... per line
+  groupSyls(List<Widget> widgets) {
+    List<Widget> returnList = [];
+    for (int i = 0; i < widgets.length; i++) {
+      if (i % 3 == 0) {
+        returnList.add(widgets[i]);
+      } else if (i % 3 == 2) {
+        returnList.add(Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [widgets[i - 1], widgets[i]],
+        ));
+      }
+    }
+    if (widgets.length % 3 == 2) {
+      returnList.add(Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [widgets.last],
+      ));
+    }
+    return returnList
+        .map((item) => Padding(
+              padding: EdgeInsets.only(top: 70),
+              child: item,
+            ))
+        .toList();
+  }
+
   populateDb() {
-    Recording rec = Recording();
-    rec.name = "Lamp";
-    rec.imgPath = 'assets/pics/lamp.jpg';
-    recBox.put(rec);
+    Syllable sylL =
+        Syllable(name: 'L', icon: 'assets/iconL.svg', color: 0xFF0A758F);
 
-    Syllable sylL = Syllable();
-    sylL.name = 'L';
-    sylL.icon = 'assets/iconL.svg';
-    sylL.color = const Color(0xFF0A758F);
+    Syllable sylS =
+        Syllable(name: 'S', icon: 'assets/iconS.svg', color: 0xFF29CFD6);
 
-    Syllable sylS = Syllable();
-    sylS.name = 'S';
-    sylS.icon = 'assets/iconS.svg';
-    sylS.color = const Color(0xFF29CFD6);
+    Syllable sylR =
+        Syllable(name: 'R', icon: 'assets/iconR.svg', color: 0xFF8487C3);
 
-    Syllable sylR = Syllable();
-    sylR.name = 'R';
-    sylR.icon = 'assets/iconR.svg';
-    sylR.color = const Color(0xFF8487C3);
+    Syllable sylD =
+        Syllable(name: 'D', icon: 'assets/iconD.svg', color: 0xFFF6B26B);
 
-    Syllable sylD = Syllable();
-    sylD.name = 'D';
-    sylD.icon = 'assets/iconD.svg';
-    sylD.color = const Color(0xFFF6B26B);
-    sylBox.putMany([sylL, sylS, sylR, sylD]);
+    Syllable sylM =
+        Syllable(name: 'M', icon: 'assets/iconL.svg', color: 0xFF0A758F);
+    Syllable sylJ =
+        Syllable(name: 'J', icon: 'assets/iconS.svg', color: 0xFF29CFD6);
+    Syllable sylH =
+        Syllable(name: 'H', icon: 'assets/iconR.svg', color: 0xFF8487C3);
+    Syllable sylCH =
+        Syllable(name: 'CH', icon: 'assets/iconD.svg', color: 0xFFF6B26B);
+    Syllable sylA =
+        Syllable(name: 'A', icon: 'assets/iconL.svg', color: 0xFF0A758F);
+
+    sylL.exercises.add(Exercise(name: 'Lano', img: 'assets/pics/lano.png'));
+    sylL.exercises.add(Exercise(name: 'Lampa', img: 'assets/pics/lamp.png'));
+    sylL.exercises.add(Exercise(name: 'Lev', img: 'assets/pics/lev.png'));
+    sylL.exercises.add(Exercise(name: 'Limo', img: 'assets/pics/limo.png'));
+    sylL.exercises.add(Exercise(name: 'Luk', img: 'assets/pics/luk.png'));
+    sylL.exercises.add(Exercise(name: 'Lampa', img: 'assets/pics/lamp.png'));
+
+    sylBox.putMany([sylL, sylS, sylR, sylD, sylM, sylJ, sylH, sylCH, sylA]);
   }
 
   removeDb() {
@@ -98,7 +132,7 @@ class _SylButtonState extends State<SylButton> {
   Widget build(BuildContext context) {
     return GestureDetector(
         onTap: () {
-          Get.toNamed('/practice', arguments: widget.syl?.name);
+          Get.toNamed('/practice', arguments: widget.syl?.id);
         },
         child: Stack(alignment: Alignment.center, children: [
           const SizedBox(
@@ -115,7 +149,7 @@ class _SylButtonState extends State<SylButton> {
             height: 100.0,
             alignment: Alignment.center,
             decoration: BoxDecoration(
-              color: widget.syl?.color,
+              color: Color(widget.syl?.color ?? 0xFFFFFFFF),
               shape: BoxShape.circle,
             ),
           ),

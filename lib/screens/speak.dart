@@ -3,27 +3,33 @@ import 'dart:async';
 import 'package:flutter/foundation.dart';
 import 'package:seek_speak/app_export.dart';
 import 'package:record/record.dart';
-import '../audio_player.dart';
-
+import 'package:just_audio/just_audio.dart' as ap;
 import '../objectbox.g.dart';
 
-class Speak extends StatelessWidget {
-  Speak({Key? key}) : super(key: key);
-  final Store store = Get.find();
+class Speak extends StatefulWidget {
+  const Speak({Key? key}) : super(key: key);
+
+  @override
+  State<Speak> createState() => _SpeakState();
+}
+
+class _SpeakState extends State<Speak> {
+  ap.AudioSource? audioSource;
 
   @override
   Widget build(BuildContext context) {
-    final recBox = store.box<Recording>();
-    Recording? rec = recBox.get(5);
+    Box<Syllable> sylBox = Get.find();
+    Syllable? syl = sylBox.get(Get.arguments);
+    Exercise? exe = syl?.exercises[syl.index % syl.exercises.length];
 
     return Scaffold(
-        appBar: AppBar(title: Text("Syllable " + Get.arguments)),
+        appBar: AppBar(title: Text("Syllable " + (syl?.name ?? 'X'))),
         body: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Column(children: [
               Image.asset(
-                'assets/pics/lamp2.png',
+                exe!.img,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -32,7 +38,7 @@ class Speak extends StatelessWidget {
                     Icons.volume_up,
                     size: 50,
                   ),
-                  Text(rec!.name,
+                  Text(exe.name,
                       style:
                           const TextStyle(color: Colors.white, fontSize: 40)),
                 ],
@@ -41,7 +47,10 @@ class Speak extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.only(bottom: 40.0),
               child: AudioRecorder(onStop: (path) {
-                Get.toNamed('validate');
+                Get.toNamed('validate', arguments: [
+                  ap.AudioSource.uri(Uri.parse(path)),
+                  Get.arguments
+                ]);
               }),
             ),
           ],
@@ -99,10 +108,7 @@ class _AudioRecorderState extends State<AudioRecorder> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   _buildRecordStopControl(),
-                  const SizedBox(width: 20),
-                  _buildPauseResumeControl(),
-                  const SizedBox(width: 20),
-                  _isRecording || _isPaused ? _buildTimer() : SizedBox.shrink()
+                  ..._buildPauseResumeControl(),
                 ],
               ),
         /*
@@ -145,11 +151,10 @@ class _AudioRecorderState extends State<AudioRecorder> {
     );
   }
 
-  Widget _buildPauseResumeControl() {
-    if (!_isRecording && !_isPaused) {
-      return const SizedBox.shrink();
+  List<Widget> _buildPauseResumeControl() {
+    if (!(_isRecording || _isPaused)) {
+      return [];
     }
-
     late Icon icon;
     late Color color;
 
@@ -162,17 +167,22 @@ class _AudioRecorderState extends State<AudioRecorder> {
       color = theme.primaryColor.withOpacity(0.1);
     }
 
-    return ClipOval(
-      child: Material(
-        color: color,
-        child: InkWell(
-          child: SizedBox(width: 56, height: 56, child: icon),
-          onTap: () {
-            _isPaused ? _resume() : _pause();
-          },
+    return [
+      const SizedBox(width: 20),
+      ClipOval(
+        child: Material(
+          color: color,
+          child: InkWell(
+            child: SizedBox(width: 56, height: 56, child: icon),
+            onTap: () {
+              _isPaused ? _resume() : _pause();
+            },
+          ),
         ),
       ),
-    );
+      const SizedBox(width: 20),
+      _buildTimer()
+    ];
   }
 
   Widget _buildTimer() {
@@ -204,10 +214,10 @@ class _AudioRecorderState extends State<AudioRecorder> {
           _countdownTime -= 1;
         });
       });
-      setState(() {
-        _countdown = false;
-      });
     }
+    setState(() {
+      _countdown = false;
+    });
   }
 
   Future<void> _start() async {
