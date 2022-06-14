@@ -54,9 +54,12 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
   @override
   void initState() {
     super.initState();
-    _controller = VideoPlayerController.network(
-      'https://flutter.github.io/assets-for-api-docs/assets/videos/butterfly.mp4',
-    );
+    Box<Syllable> sylBox = Get.find();
+    Syllable? syl = sylBox.get(Get.arguments);
+    // finds last exercise in a database
+    String? assetPath = syl?.practiceVideoPath;
+    _controller = VideoPlayerController.asset(
+        assetPath ?? 'assets/videos/seek_speak_practice.mp4');
     _initializeVideoPlayerFuture = _controller.initialize();
   }
 

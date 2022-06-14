@@ -5,7 +5,7 @@
   "entities": [
     {
       "id": "1:4165080423475617389",
-      "lastPropertyId": "7:8255048722313268029",
+      "lastPropertyId": "8:670386996155731352",
       "name": "Recording",
       "properties": [
         {
@@ -13,11 +13,6 @@
           "name": "id",
           "type": 6,
           "flags": 1
-        },
-        {
-          "id": "4:5312526653904026975",
-          "name": "recPath",
-          "type": 9
         },
         {
           "id": "6:8661491681769295870",
@@ -31,6 +26,11 @@
           "flags": 520,
           "indexId": "2:4339466554620926735",
           "relationTarget": "Exercise"
+        },
+        {
+          "id": "8:670386996155731352",
+          "name": "recordingPath",
+          "type": 9
         }
       ],
       "relations": []
@@ -69,7 +69,7 @@
     },
     {
       "id": "3:1675493299718774902",
-      "lastPropertyId": "5:3075084590920245823",
+      "lastPropertyId": "6:1477007955568365601",
       "name": "Syllable",
       "properties": [
         {
@@ -97,6 +97,11 @@
           "id": "5:3075084590920245823",
           "name": "index",
           "type": 6
+        },
+        {
+          "id": "6:1477007955568365601",
+          "name": "practiceVideoPath",
+          "type": 9
         }
       ],
       "relations": []
@@ -113,7 +118,8 @@
   "retiredPropertyUids": [
     5146549794921670433,
     1498944597534341491,
-    5649665946701017959
+    5649665946701017959,
+    5312526653904026975
   ],
   "retiredRelationUids": [],
   "version": 1

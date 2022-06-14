@@ -2,12 +2,12 @@ import 'package:objectbox/objectbox.dart';
 
 @Entity()
 class Recording {
-  int id = 0;
-  String recPath = '';
+  int id;
+  String recordingPath;
   bool correct;
   final exercise = ToOne<Exercise>();
 
-  Recording({this.recPath = '', this.correct = false});
+  Recording({this.id = 0, this.recordingPath = '', this.correct = false});
 }
 
 @Entity()
@@ -16,6 +16,7 @@ class Syllable {
   String name;
   int color;
   String icon;
+  String practiceVideoPath;
 
   @Backlink('syllable')
   final exercises = ToMany<Exercise>();
@@ -26,7 +27,8 @@ class Syllable {
       this.name = '',
       this.color = 0x0,
       this.icon = '',
-      this.index = 0});
+      this.index = 0,
+      this.practiceVideoPath = ''});
 }
 
 @Entity()

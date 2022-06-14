@@ -65,28 +65,55 @@ populateDb() {
   sylBox.removeAll();
   exeBox.removeAll();
 
-  Syllable sylL =
-      Syllable(name: 'L', icon: 'assets/iconL.svg', color: 0xFF0A758F);
+  Syllable sylL = Syllable(
+      name: 'L',
+      icon: 'assets/iconL.svg',
+      color: 0xFF0A758F,
+      practiceVideoPath: 'assets/videos/seek_speak_practice.mp4');
 
-  Syllable sylS =
-      Syllable(name: 'S', icon: 'assets/iconS.svg', color: 0xFF29CFD6);
+  Syllable sylS = Syllable(
+      name: 'S',
+      icon: 'assets/iconS.svg',
+      color: 0xFF29CFD6,
+      practiceVideoPath: 'assets/videos/seek_speak_practice.mp4');
 
-  Syllable sylR =
-      Syllable(name: 'R', icon: 'assets/iconR.svg', color: 0xFF8487C3);
+  Syllable sylR = Syllable(
+      name: 'R',
+      icon: 'assets/iconR.svg',
+      color: 0xFF8487C3,
+      practiceVideoPath: 'assets/videos/seek_speak_practice.mp4');
 
-  Syllable sylD =
-      Syllable(name: 'D', icon: 'assets/iconD.svg', color: 0xFFF6B26B);
+  Syllable sylD = Syllable(
+      name: 'D',
+      icon: 'assets/iconD.svg',
+      color: 0xFFF6B26B,
+      practiceVideoPath: 'assets/videos/seek_speak_practice.mp4');
 
-  Syllable sylM =
-      Syllable(name: 'M', icon: 'assets/iconL.svg', color: 0xFF0A758F);
-  Syllable sylJ =
-      Syllable(name: 'J', icon: 'assets/iconS.svg', color: 0xFF29CFD6);
-  Syllable sylH =
-      Syllable(name: 'H', icon: 'assets/iconR.svg', color: 0xFF8487C3);
-  Syllable sylCH =
-      Syllable(name: 'CH', icon: 'assets/iconD.svg', color: 0xFFF6B26B);
-  Syllable sylA =
-      Syllable(name: 'A', icon: 'assets/iconL.svg', color: 0xFF0A758F);
+  Syllable sylM = Syllable(
+      name: 'M',
+      icon: 'assets/iconL.svg',
+      color: 0xFF0A758F,
+      practiceVideoPath: 'assets/videos/seek_speak_practice.mp4');
+  Syllable sylJ = Syllable(
+      name: 'J',
+      icon: 'assets/iconS.svg',
+      color: 0xFF29CFD6,
+      practiceVideoPath: 'assets/videos/seek_speak_practice.mp4');
+  Syllable sylH = Syllable(
+      name: 'H',
+      icon: 'assets/iconR.svg',
+      color: 0xFF8487C3,
+      practiceVideoPath: 'assets/videos/seek_speak_practice.mp4');
+  Syllable sylCH = Syllable(
+      name: 'CH',
+      icon: 'assets/iconD.svg',
+      color: 0xFFF6B26B,
+      practiceVideoPath: 'assets/videos/seek_speak_practice.mp4');
+  Syllable sylA = Syllable(
+      name: 'A',
+      icon: 'assets/iconL.svg',
+      color: 0xFF0A758F,
+      practiceVideoPath: 'assets/videos/seek_speak_practice.mp4');
 
   sylL.exercises.add(Exercise(name: 'Lano', img: 'assets/pics/lano.png'));
   sylL.exercises.add(Exercise(name: 'Lampa', img: 'assets/pics/lamp.png'));
