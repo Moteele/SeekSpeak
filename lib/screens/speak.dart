@@ -49,7 +49,8 @@ class _SpeakState extends State<Speak> {
               padding: const EdgeInsets.only(bottom: 40.0),
               child: AudioRecorder(onStop: (path) {
                 Get.toNamed('validate', arguments: [
-                  ap.AudioSource.uri(Uri.parse(path)),
+                  path,
+                  //ap.AudioSource.uri(Uri.parse(path)),
                   Get.arguments
                 ]);
               }),

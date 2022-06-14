@@ -13,7 +13,7 @@ class Reject extends StatelessWidget {
       appBar: AppBar(title: const Text('Validace')),
       body: Center(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             const Text('Chceš to zkusit znovu?',
                 style: TextStyle(fontSize: 30, color: Colors.white)),
