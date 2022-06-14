@@ -20,7 +20,8 @@ class _SpeakState extends State<Speak> {
   Widget build(BuildContext context) {
     Box<Syllable> sylBox = Get.find();
     Syllable? syl = sylBox.get(Get.arguments);
-    Exercise? exe = syl?.exercises[syl.index % syl.exercises.length];
+    // finds last exercise in a database
+    Exercise? exercise = syl?.exercises[syl.index % syl.exercises.length];
 
     return Scaffold(
         appBar: AppBar(title: Text("Syllable " + (syl?.name ?? 'X'))),
@@ -29,7 +30,7 @@ class _SpeakState extends State<Speak> {
           children: [
             Column(children: [
               Image.asset(
-                exe!.img,
+                exercise!.img,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -38,7 +39,7 @@ class _SpeakState extends State<Speak> {
                     Icons.volume_up,
                     size: 50,
                   ),
-                  Text(exe.name,
+                  Text(exercise.name,
                       style:
                           const TextStyle(color: Colors.white, fontSize: 40)),
                 ],

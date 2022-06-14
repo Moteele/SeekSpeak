@@ -18,6 +18,8 @@ Future<void> main() async {
   final sylBox = store.box<Syllable>();
   Get.put(sylBox);
 
+  populateDb();
+
   runApp(GetMaterialApp(
       initialRoute: AppRoutes.dashboard,
       getPages: AppRoutes.pages,
@@ -52,4 +54,46 @@ class ObjectBox {
     Get.put(store);
     return ObjectBox._create(store);
   }
+}
+
+populateDb() {
+  final Box<Exercise> exeBox = Get.find();
+  final Box<Syllable> sylBox = Get.find();
+  final Box<Recording> recBox = Get.find();
+
+  recBox.removeAll();
+  sylBox.removeAll();
+  exeBox.removeAll();
+
+  Syllable sylL =
+      Syllable(name: 'L', icon: 'assets/iconL.svg', color: 0xFF0A758F);
+
+  Syllable sylS =
+      Syllable(name: 'S', icon: 'assets/iconS.svg', color: 0xFF29CFD6);
+
+  Syllable sylR =
+      Syllable(name: 'R', icon: 'assets/iconR.svg', color: 0xFF8487C3);
+
+  Syllable sylD =
+      Syllable(name: 'D', icon: 'assets/iconD.svg', color: 0xFFF6B26B);
+
+  Syllable sylM =
+      Syllable(name: 'M', icon: 'assets/iconL.svg', color: 0xFF0A758F);
+  Syllable sylJ =
+      Syllable(name: 'J', icon: 'assets/iconS.svg', color: 0xFF29CFD6);
+  Syllable sylH =
+      Syllable(name: 'H', icon: 'assets/iconR.svg', color: 0xFF8487C3);
+  Syllable sylCH =
+      Syllable(name: 'CH', icon: 'assets/iconD.svg', color: 0xFFF6B26B);
+  Syllable sylA =
+      Syllable(name: 'A', icon: 'assets/iconL.svg', color: 0xFF0A758F);
+
+  sylL.exercises.add(Exercise(name: 'Lano', img: 'assets/pics/lano.png'));
+  sylL.exercises.add(Exercise(name: 'Lampa', img: 'assets/pics/lamp.png'));
+  sylL.exercises.add(Exercise(name: 'Lev', img: 'assets/pics/lev.png'));
+  sylL.exercises.add(Exercise(name: 'Limo', img: 'assets/pics/limo.png'));
+  sylL.exercises.add(Exercise(name: 'Luk', img: 'assets/pics/luk.png'));
+  sylL.exercises.add(Exercise(name: 'Lampa', img: 'assets/pics/lamp.png'));
+
+  sylBox.putMany([sylL, sylS, sylR, sylD, sylM, sylJ, sylH, sylCH, sylA]);
 }

@@ -18,7 +18,7 @@ class Practice extends StatelessWidget {
         children: [
           Container(
               width: 400,
-              height: 600,
+              height: 400,
               color: Colors.white,
               child: VideoPlayerScreen()),
           Padding(
