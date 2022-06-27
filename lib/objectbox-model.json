@@ -1,0 +1,126 @@
+{
+  "_note1": "KEEP THIS FILE! Check it into a version control system (VCS) like git.",
+  "_note2": "ObjectBox manages crucial IDs for your object model. See docs for details.",
+  "_note3": "If you have VCS merge conflicts, you must resolve them according to ObjectBox docs.",
+  "entities": [
+    {
+      "id": "1:4165080423475617389",
+      "lastPropertyId": "8:670386996155731352",
+      "name": "Recording",
+      "properties": [
+        {
+          "id": "1:8013921704123229836",
+          "name": "id",
+          "type": 6,
+          "flags": 1
+        },
+        {
+          "id": "6:8661491681769295870",
+          "name": "correct",
+          "type": 1
+        },
+        {
+          "id": "7:8255048722313268029",
+          "name": "exerciseId",
+          "type": 11,
+          "flags": 520,
+          "indexId": "2:4339466554620926735",
+          "relationTarget": "Exercise"
+        },
+        {
+          "id": "8:670386996155731352",
+          "name": "recordingPath",
+          "type": 9
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "2:2433790730751946661",
+      "lastPropertyId": "4:2418643536615506435",
+      "name": "Exercise",
+      "properties": [
+        {
+          "id": "1:6119465718545489641",
+          "name": "id",
+          "type": 6,
+          "flags": 1
+        },
+        {
+          "id": "2:7806213172235784874",
+          "name": "img",
+          "type": 9
+        },
+        {
+          "id": "3:4712464687601090396",
+          "name": "syllableId",
+          "type": 11,
+          "flags": 520,
+          "indexId": "1:6733919354624951544",
+          "relationTarget": "Syllable"
+        },
+        {
+          "id": "4:2418643536615506435",
+          "name": "name",
+          "type": 9
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "3:1675493299718774902",
+      "lastPropertyId": "6:1477007955568365601",
+      "name": "Syllable",
+      "properties": [
+        {
+          "id": "1:913428874094485690",
+          "name": "id",
+          "type": 6,
+          "flags": 1
+        },
+        {
+          "id": "2:395669038038704672",
+          "name": "name",
+          "type": 9
+        },
+        {
+          "id": "3:3736796258957808931",
+          "name": "icon",
+          "type": 9
+        },
+        {
+          "id": "4:4618573131528367440",
+          "name": "color",
+          "type": 6
+        },
+        {
+          "id": "5:3075084590920245823",
+          "name": "index",
+          "type": 6
+        },
+        {
+          "id": "6:1477007955568365601",
+          "name": "practiceVideoPath",
+          "type": 9
+        }
+      ],
+      "relations": []
+    }
+  ],
+  "lastEntityId": "3:1675493299718774902",
+  "lastIndexId": "2:4339466554620926735",
+  "lastRelationId": "0:0",
+  "lastSequenceId": "0:0",
+  "modelVersion": 5,
+  "modelVersionParserMinimum": 5,
+  "retiredEntityUids": [],
+  "retiredIndexUids": [],
+  "retiredPropertyUids": [
+    5146549794921670433,
+    1498944597534341491,
+    5649665946701017959,
+    5312526653904026975
+  ],
+  "retiredRelationUids": [],
+  "version": 1
+}
